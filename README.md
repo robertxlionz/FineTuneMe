@@ -56,12 +56,30 @@ The launcher will automatically:
 3.  Install Frontend dependencies (`npm install`).
 4.  Launch the Unified Dashboard.
 
-### 2. Usage
-1.  Open **http://localhost:3000**.
-2.  **Upload** your raw files (e.g., a folder of PDFs, an Excel sheet, or a screenshot).
-3.  Choose your **Strategy** (e.g., "High-Yield Q&A", "Summarization").
-4.  Click **"Start Processing"**.
-5.  Download your `.jsonl` dataset!
+### 2. Usage Guide
+
+#### Step 1: Configure AI Provider
+**☁️ Cloud Mode (Fastest)**
+1.  Select **Groq**, **OpenAI**, or **Anthropic** from the provider dropdown.
+2.  **Enter API Key**: A secure password field will appear. Paste your key here (it is saved locally in your browser).
+3.  **Select Model**: The system will auto-populate available models (e.g., `llama-4-scout-17b`).
+
+**🏠 Local Mode (Private)**
+1.  Ensure [Ollama](https://ollama.com) is running (`ollama serve`).
+2.  Select **Ollama** as the provider.
+3.  **Enter Model Tag**: Type the exact name of your local model (e.g., `llama3.2`, `mistral`, `llava`).
+4.  **Base URL**: Default is `http://localhost:11434`.
+
+#### Step 2: Upload & Generate
+1.  **Upload Files**: Drag & drop PDFs, Images, Excels, or legacy Office files.
+2.  **Select Strategy**: Choose **"High-Yield Q&A"** for fine-tuning data or **"Summarization"**.
+3.  Click **"Start Processing"**.
+4.  Download the resulting `.jsonl` file.
+
+### 3. API Key Security (Cloud Mode)
+- **Client-Side Only**: Your API keys (Groq, OpenAI, etc.) are **NEVER** sent to our servers or saved in the backend database.
+- **LocalStorage**: They are encrypted and stored locally in your browser's `localStorage`.
+- **Control**: You have full control. Clear your browser cache to wipe them instantly.
 
 ---
 
