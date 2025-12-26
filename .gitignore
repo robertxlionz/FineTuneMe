@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Node
+node_modules/
+.next/
+out/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Project
+QMS-RAG-System/
+finetuneme.db
+# Logs and Debug
+*.log
+payload_debug.json
+debug_*.pptx
+groq_models.log
+
+# Temporary / User Data
+uploads/
+output/
+datasets/
+finetuneme.db
+hardware_status.json
+check_groq_models.py
+list_groq_models.py
+test_*.py
+
+# Python Environment
+.venv/
+finetuneme.egg-info/
+__pycache__/
+*.pyc
+
+# IDE / Editor
+.vscode/
+.idea/
