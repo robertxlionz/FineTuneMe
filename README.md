@@ -83,6 +83,31 @@ The launcher will automatically:
 
 ---
 
+## 🏎️ Recommended Models
+FineTuneMe is model-agnostic, but we have tuned the prompts for specific engines.
+
+### ☁️ Cloud (Best Performance)
+| Provider | Tested Model | Best For | Notes |
+| :--- | :--- | :--- | :--- |
+| **Groq** | `llama-4-scout-17b-16e-instruct` | **Everything** | ⚡ **Highly Recommended**. Fastest inference + Native Vision support. |
+| **OpenAI** | `gpt-4o` | Complex Logic | Good fallback, but slower and more expensive. |
+| **Anthropic** | `claude-3-5-sonnet` | Creative Writing | Excellent prose, but API rate limits can be strict. |
+
+### 🏠 Local (Privacy / Offline)
+*Requires [Ollama](https://ollama.com) installed.*
+
+| VRAM | Recommended Model | Use Case |
+| :--- | :--- | :--- |
+| **< 6GB** | `llama3.2:3b` | Testing / Dev | Too small for high-quality instruction generation. |
+| **8GB** | `llama3.1:8b` | Text Only | Good standard model. Fast but no vision. |
+| **12GB** | `llama3.2-vision:11b` | **Vision** | Minimum for decent image analysis. |
+| **24GB+** | `llama3.3:70b-q4` | **Pro** | Approch state-of-the-art quality locally. |
+
+> **⚠️ Vision Note**: If you upload images while using Groq, the system will **automatically route** the request to `llama-4-scout`, even if you selected a text-only model. This prevents errors and ensures your images are actually analyzed.
+
+
+---
+
 ## 🧬 Vision Capabilities
 FineTuneMe V2 is engineered for the **Multimodal Era**.
 - **Images**: Upload direct `.png`/`.jpg` files.
@@ -98,6 +123,17 @@ We love contributions! Please check [ROADMAP.md](ROADMAP.md) for current limitat
 - **Legacy Files**: Help us build a better converter for `.doc` and `.ppt`.
 - **Chunking**: Implement markdown-aware splitters.
 - **Integrations**: Add direct export to HuggingFace.
+
+## 👨‍💻 Developer Guide: "Hacking" the AI
+
+Want to change the models, prompts, or logic? Here are the key files:
+
+| Logic | File Path | What to Change |
+| :--- | :--- | :--- |
+| **Model Lists** | `src/finetuneme/services/providers.py` | Add new Groq/OpenAI models to `AVAILABLE_MODELS` list. |
+| **Prompts** | `src/finetuneme/services/generation.py` | Edit `system_prompt` variables to change how the AI extracts data. |
+| **Vision Logic** | `src/finetuneme/services/providers.py` | Modify `GroqProvider.generate` to change how images are attached or routed. |
+| **File loaders** | `src/finetuneme/services/loaders.py` | Logic for parsing PDFs, Excels, and PowerPoints. |
 
 ---
 
